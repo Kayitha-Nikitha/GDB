@@ -1,0 +1,362 @@
+************************************PROGRAM 1***************************************************
+
+#include <stdio.h>
+int sum(int n) 
+{
+    if (n != 0)
+        return n + sum(n-1); 
+    else
+        return n;
+}
+
+int main() 
+{
+    int number = 4, result;
+    result = sum(number);
+    printf("sum = %d", result);
+    return 0;
+}
+
+****************************LIST OF GDB COMMANDS************************************************
+gcc -g sum.c -o  rec
+gcc --save-temp sum.c
+gedit GDB_Commands_Hist.txt
+gdb rec
+run
+start
+list
+n
+print result
+n
+n
+print result
+set history filename history.txt
+set history save on
+run
+start
+list
+n
+n
+n
+print result
+quit
+run
+n
+n
+n
+quit
+info b
+b 13
+info b
+disable 2
+info b
+enable 2
+info b
+n
+start
+continue
+until
+n
+print result
+down
+up
+n
+up
+down
+n
+start
+n
+n
+up
+down
+until
+up
+down
+until
+down
+n
+n
+start
+n
+n
+n
+n
+n
+n
+n
+n
+start
+up
+down
+n
+n
+n
+up
+until
+up
+n
+n
+start
+n
+start
+b 5
+i b
+continue
+n
+n
+up
+down
+step
+info b
+delete 2
+i b
+n
+n
+whatis n
+print n
+b 12
+b 4
+info break
+delete
+i b
+list
+b 5
+b 7
+b 13
+info b
+continue
+continue
+continue
+continue
+continue
+start
+next
+continue
+continue
+contine
+continue
+continue
+continue
+continue
+continue
+i b
+n
+start
+print number
+n
+n
+print number
+set var number=5
+continue
+continue
+continue
+continue
+continue
+continue
+continue
+continue
+start
+n
+watch number
+i b
+n
+display number
+n
+start
+i b
+delete
+i b
+list
+b 15
+continue
+i b
+undisplay number
+continue
+i b
+continue
+start
+continue
+undisplay 1
+continue
+start
+continue
+continue
+i b
+watch number
+n
+start
+n
+n
+watch number
+n
+n
+n
+n
+start
+b 5
+continue
+continue
+continue
+continue
+continue
+continue
+continue
+start
+continue
+watch n
+n
+n
+n
+n
+n
+start
+i b
+n
+step
+watch n
+n
+step
+n
+start
+i b
+watch n
+n
+n
+n
+n
+watch n
+display n
+n
+n
+n
+start
+n
+n
+set listsize 25
+list
+info frame
+exit
+quit
+
+**********************************PROGRAM 2*****************************************************
+#include <stdio.h>
+int sec_max_diff(int a[],int n)
+{
+    int i,j,temp=0;
+
+    for(i=0;i<n;i++)
+    {
+        for(j=0;j<n-i-1;j++)
+        {
+            if(a[j]>a[j+1])
+            {
+                temp=a[j];
+                a[j]=a[j+1];
+                a[j+1]=temp;
+            }
+        }
+    }
+    return a[n-1]-a[1];
+}
+void main()
+{
+    int a[]={1,33,24,21,13};
+
+    int n=sizeof(a)/sizeof(a[0]);
+
+     int result=sec_max_diff(a,n);
+
+    printf("%d",result);
+}
+
+******************************LIST OF GDB COMMANDS**********************************************
+gcc -g sec_highest.c -o second
+GDB_Commands_Hist.txt
+gdb second
+start
+i b
+b 4
+b 24
+i b
+watch temp
+n
+n
+n
+n
+s
+watch temp
+display i
+display j
+n
+n
+i b
+delete 2
+delete 3
+i b
+n
+n
+n
+n
+start
+i b
+n
+start
+b 4
+b 22
+n
+i b
+undisplay 1
+undisplay 2
+i b
+n
+start
+disass main
+start
+n
+until
+finish
+n
+finish
+set history filename hist.txt
+set history save on
+n
+n
+n
+start
+n
+n
+up
+down
+tui enable
+n
+n
+tui disable
+n
+print/x temp
+print/d temp
+print/x $pc
+info frame
+quit
+run
+start
+list
+n
+print result
+n
+n
+print result
+set history filename history.txt
+set history save on
+run
+start
+list
+n
+n
+n
+print result
+quit
+run
+n
+n
+n
+quit 
